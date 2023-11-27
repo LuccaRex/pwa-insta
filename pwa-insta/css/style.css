@@ -13,7 +13,7 @@ html, body, #camera {
     transform: scaleX(-1);
     filter: FlipH;
   }
-  #camera--trigger{
+  #camera--trigger, #switch-camera-button, #post-photo-button{
     width: 200px;
     background-color: black;
     color: white;

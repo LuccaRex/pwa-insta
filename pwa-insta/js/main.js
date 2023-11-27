@@ -35,6 +35,11 @@ if ('serviceWorker' in navigator) {
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
     cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
+    ;
+  };
+
+  const postPhotoButton = document.querySelector("#post-photo-button"); 
+  postPhotoButton.onclick = function () {
     const url = cameraSensor.toDataURL("image/webp");
     cameraOutput.src = url
     cameraOutput.classList.add("taken");
@@ -43,8 +48,8 @@ if ('serviceWorker' in navigator) {
       fotos.shift(); // Remove a foto mais antiga se houver 3 ou mais fotos na lista.
     }
     fotos.push(url);
-    displayFotos();
-  };
+    displayFotos()
+  } 
   
   function displayFotos () {
     const fotosContainer = document.querySelector("#fotos-container");
