@@ -43,7 +43,6 @@ if ('serviceWorker' in navigator) {
     const url = cameraSensor.toDataURL("image/webp");
     cameraOutput.src = url
     cameraOutput.classList.add("taken");
-  
     if (fotos.length >= 3) {
       fotos.shift(); // Remove a foto mais antiga se houver 3 ou mais fotos na lista.
     }
@@ -54,10 +53,13 @@ if ('serviceWorker' in navigator) {
   function displayFotos () {
     const fotosContainer = document.querySelector("#fotos-container");
     fotosContainer.innerHTML = ""; // Limpa o conteúdo anterior.
-  
+    const usuario = document.getElementById('usuario');
+    const h1 = document.createElement("h1").value;
+    h1.innerHTML = usuario
     fotos.forEach((url) => {
       const img = document.createElement("img");
       img.src = url;
+      fotosContainer.appendChild(h1);
       fotosContainer.appendChild(img);
     });
   }
