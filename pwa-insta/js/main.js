@@ -53,13 +53,13 @@ if ('serviceWorker' in navigator) {
   function displayFotos () {
     const fotosContainer = document.querySelector("#fotos-container");
     fotosContainer.innerHTML = ""; // Limpa o conteúdo anterior.
-    const usuario = document.getElementById('usuario');
+    const usuario = document.getElementById('#usuario');
     const h1 = document.createElement("h1").value;
     h1.innerHTML = usuario
     fotos.forEach((url) => {
       const img = document.createElement("img");
       img.src = url;
-      fotosContainer.appendChild(h1);
+      h1.appendChild(h1);
       fotosContainer.appendChild(img);
     });
   }
