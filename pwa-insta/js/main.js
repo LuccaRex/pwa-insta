@@ -38,31 +38,37 @@ if ('serviceWorker' in navigator) {
     ;
   };
 
-  const postPhotoButton = document.querySelector("#post-photo-button"); 
   postPhotoButton.onclick = function () {
     const url = cameraSensor.toDataURL("image/webp");
-    cameraOutput.src = url
-    cameraOutput.classList.add("taken");
-    if (fotos.length >= 3) {
-      fotos.shift(); // Remove a foto mais antiga se houver 3 ou mais fotos na lista.
-    }
-    fotos.push(url);
-    displayFotos()
-  } 
+    const userName = usuarioInput.value || 'Usuário Anônimo';
   
-  function displayFotos () {
+    // Adiciona a foto à lista
+    fotos.push({ url, userName });
+  
+    // Exibe as fotos
+    displayFotos();
+  };
+  
+  function displayFotos() {
     const fotosContainer = document.querySelector("#fotos-container");
     fotosContainer.innerHTML = ""; // Limpa o conteúdo anterior.
-    const usuario = document.getElementById('#usuario');
-    const h1 = document.createElement("h1").value;
-    h1.innerHTML = usuario
-    fotos.forEach((url) => {
+  
+    fotos.forEach(({ url, userName }) => {
+      const imgContainer = document.createElement("div");
+      imgContainer.classList.add("photo-container");
+  
       const img = document.createElement("img");
       img.src = url;
-      h1.appendChild(h1);
-      fotosContainer.appendChild(img);
+  
+      const caption = document.createElement("p");
+      caption.innerText = userName;
+  
+      imgContainer.appendChild(img);
+      imgContainer.appendChild(caption);
+      fotosContainer.appendChild(imgContainer);
     });
   }
+  
   
   const switchCameraButton = document.querySelector("#switch-camera-button");
   switchCameraButton.addEventListener("click", async () => {
